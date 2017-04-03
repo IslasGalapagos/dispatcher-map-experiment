@@ -2,6 +2,7 @@
   "name": "dispatcher-map-experiment",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://islasgalapagos.github.io/dispatcher-map-experiment/build/",
   "dependencies": {
     "leaflet": "^1.0.3",
     "leaflet.markercluster": "^1.0.4",
