@@ -1,0 +1,247 @@
+exports[`App render drop area over the map 1`] = `
+<div>
+  <div
+    className="map-holder">
+    <Map
+      animate={false}
+      bounds={
+        Array [
+          Array [
+            51.51280224425956,
+            -0.11681556701660155,
+          ],
+          Array [
+            51.50211782162702,
+            -0.14428138732910156,
+          ],
+        ]
+      }
+      maxZoom={18}
+      useFlyTo={false}>
+      <TileLayer
+        url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
+      <MarkerClusterGroup
+        wrapperOptions={Object {}} />
+    </Map>
+  </div>
+  <div
+    className="list-holder"
+    onDragEnter={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]} />
+  <div
+    className="drop-area"
+    onDragEnter={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]} />
+</div>
+`;
+
+exports[`App render holder over the map 1`] = `
+<div>
+  <div
+    className="map-holder">
+    <Map
+      animate={false}
+      bounds={
+        Array [
+          Array [
+            51.51280224425956,
+            -0.11681556701660155,
+          ],
+          Array [
+            51.50211782162702,
+            -0.14428138732910156,
+          ],
+        ]
+      }
+      maxZoom={18}
+      useFlyTo={false}>
+      <TileLayer
+        url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
+      <MarkerClusterGroup
+        wrapperOptions={Object {}} />
+    </Map>
+  </div>
+  <div
+    className="draggable-holder"
+    draggable="true"
+    onDragEnd={[Function]}
+    onDragStart={[Function]}
+    onMouseOut={[Function]}
+    style={
+      Object {
+        "height": 4,
+        "left": 2,
+        "top": 1,
+        "width": 3,
+      }
+    } />
+  <div
+    className="list-holder"
+    onDragEnter={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]} />
+</div>
+`;
+
+exports[`App render orders 1`] = `
+<div>
+  <div
+    className="map-holder">
+    <Map
+      animate={false}
+      bounds={
+        Array [
+          Array [
+            51.51280224425956,
+            -0.11681556701660155,
+          ],
+          Array [
+            51.50211782162702,
+            -0.14428138732910156,
+          ],
+        ]
+      }
+      maxZoom={18}
+      useFlyTo={false}>
+      <TileLayer
+        url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
+      <MarkerClusterGroup
+        wrapperOptions={Object {}} />
+    </Map>
+  </div>
+  <div
+    className="list-holder"
+    onDragEnter={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]}>
+    <div
+      draggable="true"
+      onDragEnd={[Function]}
+      onDragStart={[Function]}>
+      2
+      <br />
+      3
+      <hr />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`App render points 1`] = `
+<div>
+  <div
+    className="map-holder">
+    <Map
+      animate={false}
+      bounds={
+        Array [
+          Array [
+            51.51280224425956,
+            -0.11681556701660155,
+          ],
+          Array [
+            51.50211782162702,
+            -0.14428138732910156,
+          ],
+        ]
+      }
+      maxZoom={18}
+      useFlyTo={false}>
+      <TileLayer
+        url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
+      <MarkerClusterGroup
+        markers={
+          Array [
+            Object {
+              "lat": 1,
+              "lng": 2,
+            },
+          ]
+        }
+        wrapperOptions={Object {}} />
+    </Map>
+  </div>
+  <div
+    className="list-holder"
+    onDragEnter={[Function]}
+    onDragOver={[Function]}
+    onDrop={[Function]} />
+</div>
+`;
+
+exports[`mapActions moveOutList 1`] = `
+Array [
+  Object {
+    "data": "data",
+    "type": "list->moveOut",
+  },
+]
+`;
+
+exports[`mapActions moveToList 1`] = `
+Array [
+  Object {
+    "data": "data",
+    "type": "list->move",
+  },
+]
+`;
+
+exports[`mapActions pointerOut 1`] = `
+Array [
+  Object {
+    "type": "holder->hide",
+  },
+]
+`;
+
+exports[`mapActions pointerOver 1`] = `
+Array [
+  Object {
+    "data": Object {
+      "address": 3,
+      "id": 1,
+      "type": 2,
+    },
+    "rect": "RECT",
+    "type": "holder->show",
+  },
+]
+`;
+
+exports[`mapActions startMoveOutList 1`] = `
+Array [
+  Object {
+    "order": "order",
+    "type": "list->moveStart",
+  },
+]
+`;
+
+exports[`mapActions stopMoveOutList 1`] = `
+Array [
+  Object {
+    "type": "list->moveStop",
+  },
+]
+`;
+
+exports[`test mapState 1`] = `
+Object {
+  "dropArea": 2,
+  "holder": 1,
+  "orders": 3,
+  "points": Array [],
+}
+`;
+
+exports[`test mapState 2`] = `
+Object {
+  "dropArea": undefined,
+  "holder": undefined,
+  "orders": undefined,
+  "points": 1,
+}
+`;

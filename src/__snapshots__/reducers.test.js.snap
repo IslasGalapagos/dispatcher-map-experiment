@@ -1,0 +1,71 @@
+exports[`test holder->hide 1`] = `
+Object {
+  "holder": null,
+}
+`;
+
+exports[`test holder->show 1`] = `
+Object {
+  "holder": Object {
+    "data": Object {
+      "a": 1,
+    },
+    "height": 4,
+    "left": 2,
+    "top": 1,
+    "width": 3,
+  },
+}
+`;
+
+exports[`test init 1`] = `Object {}`;
+
+exports[`test list->move 1`] = `
+Object {
+  "orders": Array [
+    Object {
+      "options": Object {
+        "id": 1,
+      },
+    },
+  ],
+  "points": Array [
+    Object {
+      "options": Object {
+        "id": 2,
+      },
+    },
+  ],
+}
+`;
+
+exports[`test list->moveOut 1`] = `
+Object {
+  "orders": Array [
+    Object {
+      "options": Object {
+        "id": 2,
+      },
+    },
+  ],
+  "points": Array [
+    Object {
+      "options": Object {
+        "id": 1,
+      },
+    },
+  ],
+}
+`;
+
+exports[`test list->moveStart 1`] = `
+Object {
+  "dropArea": true,
+}
+`;
+
+exports[`test list->moveStop 1`] = `
+Object {
+  "dropArea": false,
+}
+`;

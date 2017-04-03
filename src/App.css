@@ -1,0 +1,53 @@
+.map-holder {
+  float: left;
+  width: 80vw;
+  height: 100vh;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.list-holder {
+  float: right;
+  width: 18vw;
+  height: 100vh;
+  max-height: 100vh;
+  overflow-y: 'scroll';
+  overflow-x: 'hidden';
+}
+
+.list-holder.dragover {
+  background-color: salmon;
+}
+
+.leaflet-marker-icon.marker-cluster {
+  text-align: center;
+  box-sizing: border-box;
+  background-color: #FFF;
+  border-radius: 50%;
+  border: 4px solid blue;
+}
+
+.leaflet-marker-icon.marker-cluster span {
+  line-height: 32px;
+}
+
+.draggable-holder {
+  position: absolute;
+  background-color: salmon;
+  opacity: .5;
+  z-index: 1000;
+}
+
+.drop-area {
+  position: absolute;
+  background-color: white;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  width: 80vw;
+  height: 100vh;
+  z-index: 1001;
+}

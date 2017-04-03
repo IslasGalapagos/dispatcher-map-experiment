@@ -1,0 +1,27 @@
+{
+  "name": "dispatcher-map-experiment",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "leaflet": "^1.0.3",
+    "leaflet.markercluster": "^1.0.4",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-leaflet": "^1.1.4",
+    "react-redux": "^5.0.3",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "enzyme": "^2.8.0",
+    "enzyme-to-json": "^1.5.0",
+    "react-addons-test-utils": "^15.4.2",
+    "react-scripts": "0.9.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "coverage": "react-scripts test --env=jsdom --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!src/index.js --collectCoverageFrom=!src/third-party/**/*.js",
+    "eject": "react-scripts eject"
+  }
+}
