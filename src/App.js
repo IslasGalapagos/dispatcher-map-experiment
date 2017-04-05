@@ -63,11 +63,12 @@ export class App extends Component {
           <div
             className={`draggable-holder draggable-holder--${holder.data.type}`}
             draggable="true"
-            onDragStart={event =>
+            onDragStart={event => {
               event.dataTransfer.setData(
                 "text/plain",
                 JSON.stringify(holder.data)
-              )}
+              );
+            }}
             onDragEnd={pointerOut}
             style={{
               top: holder.top - 18,
@@ -98,6 +99,9 @@ export class App extends Component {
           {orders.map(order => (
             <div
               key={order.options.id}
+              className={
+                `list-holder--item list-holder--item--${order.options.type}`
+              }
               draggable="true"
               onDragStart={event => {
                 event.dataTransfer.setData("text/plain", JSON.stringify(order));
@@ -105,7 +109,15 @@ export class App extends Component {
               }}
               onDragEnd={stopMoveOutList}
             >
-              {order.options.type}<br />{order.options.address}<hr />
+              <div className="list-holder--item--name">
+                {order.options.name}
+              </div>
+              <div className="list-holder--item--size">
+                {order.options.size} YARDS
+              </div>
+              <div className="list-holder--item--address">
+                {order.options.address}
+              </div>
             </div>
           ))}
         </div>

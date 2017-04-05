@@ -126,13 +126,20 @@ exports[`App render orders 1`] = `
     onDragOver={[Function]}
     onDrop={[Function]}>
     <div
+      className="list-holder--item list-holder--item--2"
       draggable="true"
       onDragEnd={[Function]}
       onDragStart={[Function]}>
-      2
-      <br />
-      3
-      <hr />
+      <div
+        className="list-holder--item--name" />
+      <div
+        className="list-holder--item--size">
+         YARDS
+      </div>
+      <div
+        className="list-holder--item--address">
+        3
+      </div>
     </div>
   </div>
 </div>

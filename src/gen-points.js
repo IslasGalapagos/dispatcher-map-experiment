@@ -20,7 +20,7 @@ export const createIcon = ({ type, size }) =>
     html: `
             <div class="work-order-icon--pin">
               <span class="work-order-icon--inner">${size}</span>
-            </div>
+            </div>P
             <div class="work-order-icon--pulse"></div>
           `
   });

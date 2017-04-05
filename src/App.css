@@ -11,15 +11,24 @@
 
 .list-holder {
   float: right;
-  width: 18vw;
   height: 100vh;
+  width: 20vw;
   max-height: 100vh;
-  overflow-y: 'scroll';
-  overflow-x: 'hidden';
+  overflow: scroll;
+  overflow-x: hidden;
 }
 
-.list-holder.dragover {
-  background-color: salmon;
+.list-holder--item {
+  padding: 10px;
+  border-bottom: 4px solid #444;
+}
+
+.list-holder--item:last-child {
+  border-bottom: none;
+}
+
+.list-holder--item--name {
+  font-weight: bold;
 }
 
 .draggable-holder {
@@ -75,20 +84,23 @@
 
 .draggable-holder--DROPOFF-CAN,
 .draggable-holder--DROPOFF-CAN .draggable-holder--hide,
-.work-order-icon--DROPOFF-CAN .work-order-icon--pin {
+.work-order-icon--DROPOFF-CAN .work-order-icon--pin,
+.list-holder--item--DROPOFF-CAN {
   background: #e9d1ff;
 }
 
 .draggable-holder--FINAL,
 .draggable-holder--FINAL .draggable-holder--hide,
-.work-order-icon--FINAL .work-order-icon--pin {
+.work-order-icon--FINAL .work-order-icon--pin,
+.list-holder--item--FINAL {
   background: #fa3a37;
   color: white;
 }
 
 .draggable-holder--SPOT,
 .draggable-holder--SPOT .draggable-holder--hide,
-.work-order-icon--SPOT .work-order-icon--pin {
+.work-order-icon--SPOT .work-order-icon--pin,
+.list-holder--item--SPOT {
   background: #5fde6c;
 }
 
