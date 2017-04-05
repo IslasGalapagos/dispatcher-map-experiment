@@ -64,19 +64,28 @@ exports[`App render holder over the map 1`] = `
     </Map>
   </div>
   <div
-    className="draggable-holder"
+    className="draggable-holder draggable-holder--undefined"
     draggable="true"
     onDragEnd={[Function]}
     onDragStart={[Function]}
-    onMouseOut={[Function]}
     style={
       Object {
-        "height": 4,
-        "left": 2,
-        "top": 1,
-        "width": 3,
+        "left": -16,
+        "top": -17,
       }
-    } />
+    }>
+    <div
+      className="draggable-holder--hide"
+      onClick={[Function]} />
+    <div
+      className="draggable-holder--name" />
+    <div
+      className="draggable-holder--size">
+       YARDS
+    </div>
+    <div
+      className="draggable-holder--address" />
+  </div>
   <div
     className="list-holder"
     onDragEnter={[Function]}
@@ -203,6 +212,8 @@ Array [
     "data": Object {
       "address": 3,
       "id": 1,
+      "name": undefined,
+      "size": 4,
       "type": 2,
     },
     "rect": "RECT",

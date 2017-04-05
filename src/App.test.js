@@ -46,9 +46,6 @@ describe("App", () => {
 
     $holder.simulate("dragend");
     expect(pointerOut).toBeCalled();
-
-    $holder.simulate("mouseout");
-    expect(pointerOut).toBeCalled();
   });
 
   it("render drop area over the map", () => {
@@ -122,7 +119,7 @@ describe("mapActions", () => {
 
     pointerOver({
       _icon: { getBoundingClientRect: () => "RECT" },
-      options: { id: 1, type: 2, address: 3 }
+      options: { id: 1, size: 4, type: 2, address: 3 }
     });
 
     expect(dispatch.mock.calls[0]).toMatchSnapshot();

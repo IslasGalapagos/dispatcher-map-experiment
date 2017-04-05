@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Map, TileLayer } from "react-leaflet";
 import MarkerClusterGroup from "./third-party/MarkerClusterGroup";
-import { bounds } from "./gen-points";
+import { bounds, createIcon } from "./gen-points";
 import "./App.css";
 
 export const mapState = state => ({
@@ -13,11 +13,11 @@ export const mapState = state => ({
 });
 
 export const mapActions = dispatch => ({
-  pointerOver: ({ _icon, options: { id, type, address } }) =>
+  pointerOver: ({ _icon, options: { id, size, name, type, address } }) =>
     dispatch({
       type: "holder->show",
       rect: _icon.getBoundingClientRect(),
-      data: { id, type, address }
+      data: { id, size, type, name, address }
     }),
   pointerOut: () =>
     dispatch({
@@ -47,6 +47,7 @@ export class App extends Component {
       holder,
       dropArea
     } = this.props;
+
     return (
       <div>
         <div className="map-holder">
@@ -60,7 +61,7 @@ export class App extends Component {
         </div>
         {holder &&
           <div
-            className="draggable-holder"
+            className={`draggable-holder draggable-holder--${holder.data.type}`}
             draggable="true"
             onDragStart={event =>
               event.dataTransfer.setData(
@@ -68,14 +69,20 @@ export class App extends Component {
                 JSON.stringify(holder.data)
               )}
             onDragEnd={pointerOut}
-            onMouseOut={pointerOut}
             style={{
-              top: holder.top,
-              left: holder.left,
-              width: holder.width,
-              height: holder.height
+              top: holder.top - 18,
+              left: holder.left - 18
             }}
-          />}
+          >
+            <div className="draggable-holder--hide" onClick={pointerOut} />
+            <div className="draggable-holder--name">{holder.data.name}</div>
+            <div className="draggable-holder--size">
+              {holder.data.size} YARDS
+            </div>
+            <div className="draggable-holder--address">
+              {holder.data.address}
+            </div>
+          </div>}
         <div
           className="list-holder"
           onDragEnter={prevent}
@@ -109,6 +116,8 @@ export class App extends Component {
             onDragOver={prevent}
             onDrop={event => {
               const data = JSON.parse(event.dataTransfer.getData("text"));
+              const { options = {} } = data;
+              options.icon = createIcon(options);
               moveOutList(data);
               stopMoveOutList();
             }}

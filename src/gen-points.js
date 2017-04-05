@@ -14,6 +14,17 @@ const canSize = [10, 12, 20, 30, 40];
 const random = (min, max) => Math.random() * (max - min) + min;
 const randomItem = arr => arr[Math.floor(Math.random() * arr.length)];
 
+export const createIcon = ({ type, size }) =>
+  new L.DivIcon({
+    className: `work-order-icon work-order-icon--${type}`,
+    html: `
+            <div class="work-order-icon--pin">
+              <span class="work-order-icon--inner">${size}</span>
+            </div>
+            <div class="work-order-icon--pulse"></div>
+          `
+  });
+
 export const generatePoints = () => {
   return [...Array(10).keys()].map(() => {
     const size = randomItem(canSize);
@@ -24,17 +35,10 @@ export const generatePoints = () => {
       options: {
         id: Math.floor(random(1, 1000000)),
         type,
+        name: `${Math.floor(random(1, 1000))} ${type}`,
         address: `${Math.floor(random(1, 100))} ${randomItem(location)} street`,
         size,
-        icon: new L.DivIcon({
-          className: `work-order-icon work-order-icon--${type}`,
-          html: `
-            <div class="work-order-icon--pin">
-              <span class="work-order-icon--inner">${size}</span>
-            </div>
-            <div class="work-order-icon--pulse"></div>
-          `
-        })
+        icon: createIcon({ type, size })
       }
     };
   });
