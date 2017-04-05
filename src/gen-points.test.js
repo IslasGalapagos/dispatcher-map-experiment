@@ -2,7 +2,6 @@ import { bounds, generatePoints } from "./gen-points";
 
 it("should generate random points", () => {
   const points = generatePoints();
-  expect(points).toHaveProperty("length", 1000);
 
   for (let i = 0; i < 5; i++) {
     let point = points[i];

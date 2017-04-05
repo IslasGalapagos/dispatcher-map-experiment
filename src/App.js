@@ -42,7 +42,6 @@ export class App extends Component {
       moveOutList,
       pointerOver,
       pointerOut,
-      pointerDragEnd,
       points,
       orders,
       holder,

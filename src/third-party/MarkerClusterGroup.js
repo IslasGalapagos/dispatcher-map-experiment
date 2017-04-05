@@ -4,6 +4,9 @@ import { LayerGroup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet.markercluster";
 
+import "./MarkerCluster.Default.css";
+import "./MarkerCluster.css";
+
 let prevMarkerClusterGroup;
 
 export default class MarkerClusterGroup extends LayerGroup {

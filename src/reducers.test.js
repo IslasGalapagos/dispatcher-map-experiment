@@ -1,7 +1,6 @@
 import reducer from "./reducers";
 
 test("init", () => {
-  expect(reducer(undefined, {}).points.length).toBe(1000);
   expect(reducer({}, {})).toMatchSnapshot();
 });
 
