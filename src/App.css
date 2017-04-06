@@ -66,6 +66,26 @@
   font-weight: bold;
 }
 
+.work-order-sorted-icon {
+  border: 4px solid #444;
+  padding: 4px 4px 0 4px;
+  text-align: center;
+  line-height: 8px;
+  background: #444;
+  color: white;
+  font-weight: bold;
+}
+
+.work-order-sorted-icon::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 15px;
+  background: #444;
+  bottom: -18px;
+  left: -4px;
+}
+
 .work-order-icon--pin {
   width: 30px;
   height: 30px;
