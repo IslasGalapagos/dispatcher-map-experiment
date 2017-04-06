@@ -26,7 +26,7 @@ export const createIcon = ({ type, size }) =>
   });
 
 export const generatePoints = () => {
-  return [...Array(10).keys()].map(() => {
+  return [...Array(1000).keys()].map(() => {
     const size = randomItem(canSize);
     const type = randomItem(orderType);
     return {

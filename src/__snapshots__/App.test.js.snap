@@ -21,7 +21,6 @@ exports[`App render drop area over the map 1`] = `
       <TileLayer
         url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
       <MarkerClusterGroup
-        markers={Array []}
         wrapperOptions={Object {}} />
     </Map>
   </div>
@@ -61,7 +60,6 @@ exports[`App render holder over the map 1`] = `
       <TileLayer
         url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
       <MarkerClusterGroup
-        markers={Array []}
         wrapperOptions={Object {}} />
     </Map>
   </div>
@@ -119,23 +117,23 @@ exports[`App render orders 1`] = `
       <TileLayer
         url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
       <MarkerClusterGroup
-        markers={
-          Array [
-            Object {
-              "options": Object {
-                "icon": NewClass {
-                  "_initHooksCalled": true,
-                  "options": Object {
-                    "className": "work-order-sorted-icon",
-                    "html": 1,
-                  },
-                },
-                "sorted": true,
-              },
-            },
-          ]
-        }
         wrapperOptions={Object {}} />
+      <Marker
+        icon={
+          NewClass {
+            "_initHooksCalled": true,
+            "options": Object {
+              "className": "work-order-sorted-icon",
+              "html": "<span>1</span>",
+            },
+          }
+        }
+        position={
+          Array [
+            undefined,
+            undefined,
+          ]
+        } />
     </Map>
   </div>
   <div

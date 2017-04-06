@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Map, TileLayer } from "react-leaflet";
+import { Map, TileLayer, Polyline, Marker } from "react-leaflet";
 import L from "leaflet";
 import MarkerClusterGroup from "./third-party/MarkerClusterGroup";
 import { bounds, createIcon } from "./gen-points";
@@ -14,10 +14,7 @@ export const mapState = state => ({
 });
 
 export const mapActions = dispatch => ({
-  pointerOver: (
-    { _icon, options: { id, sorted, size, name, type, address } }
-  ) =>
-    sorted ||
+  pointerOver: ({ _icon, options: { id, size, name, type, address } }) =>
     dispatch({
       type: "holder->show",
       rect: _icon.getBoundingClientRect(),
@@ -51,20 +48,28 @@ export class App extends Component {
           <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
           <MarkerClusterGroup
             onMarkerMouseOver={pointerOver}
-            markers={(points || []).concat(
-              orders.map((order, index) => ({
-                ...order,
-                options: {
-                  ...orders.options,
-                  sorted: true,
-                  icon: new L.DivIcon({
-                    className: "work-order-sorted-icon",
-                    html: index + 1
-                  })
-                }
-              }))
-            )}
+            markers={points}
           />
+          {orders.map((order, index) => (
+            <Marker
+              key={index}
+              position={[order.lat, order.lng]}
+              icon={
+                new L.DivIcon({
+                  className: "work-order-sorted-icon",
+                  html: `<span>${index + 1}</span>`
+                })
+              }
+            />
+          ))}
+          {orders.length > 1 &&
+            <Polyline
+              color="#444"
+              positions={orders.reduce(
+                (memo, order) => [...memo, [order.lat, order.lng]],
+                []
+              )}
+            />}
         </Map>
       </div>
     );
