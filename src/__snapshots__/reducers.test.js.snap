@@ -22,13 +22,7 @@ exports[`test init 1`] = `Object {}`;
 
 exports[`test list->move 1`] = `
 Object {
-  "orders": Array [
-    Object {
-      "options": Object {
-        "id": 1,
-      },
-    },
-  ],
+  "orders": Array [],
   "points": Array [
     Object {
       "options": Object {

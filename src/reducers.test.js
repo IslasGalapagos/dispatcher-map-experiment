@@ -51,3 +51,138 @@ test("list->moveOut", () => {
     )
   ).toMatchSnapshot();
 });
+
+describe("list->reorder", () => {
+  const point = id => ({ options: { id } });
+
+  test("1", () => {
+    const action = {
+      type: "list->reorder",
+      targetId: undefined,
+      draggedId: 0
+    };
+    const state = {
+      points: [point(0)],
+      orders: [point(1), point(2), point(3), point(4), point(5)]
+    };
+
+    expect(reducer(state, action)).toEqual({
+      points: [],
+      orders: [point(1), point(2), point(3), point(4), point(5), point(0)]
+    });
+  });
+
+  test("2", () => {
+    const action = {
+      type: "list->reorder",
+      targetId: 2,
+      draggedId: 0
+    };
+    const state = {
+      points: [point(0)],
+      orders: [point(1), point(2), point(3), point(4), point(5)]
+    };
+
+    expect(reducer(state, action)).toEqual({
+      points: [],
+      orders: [point(1), point(0), point(2), point(3), point(4), point(5)]
+    });
+  });
+
+  test("3", () => {
+    const action = {
+      type: "list->reorder",
+      targetId: 4,
+      draggedId: 10
+    };
+    const state = {
+      points: [point(0), point(10)],
+      orders: [point(1), point(2), point(3), point(10), point(4), point(5)]
+    };
+
+    expect(reducer(state, action)).toEqual({
+      points: [point(0)],
+      orders: [point(1), point(2), point(3), point(10), point(4), point(5)]
+    });
+  });
+
+  test("3.1", () => {
+    const action = {
+      type: "list->reorder",
+      targetId: 1,
+      draggedId: 10
+    };
+    const state = {
+      points: [point(0), point(10)],
+      orders: [point(1), point(2), point(3), point(10), point(4), point(5)]
+    };
+
+    expect(reducer(state, action)).toEqual({
+      points: [point(0)],
+      orders: [point(10), point(1), point(2), point(3), point(4), point(5)]
+    });
+  });
+
+  test("4", () => {
+    const action = {
+      type: "list->reorder",
+      targetId: 1,
+      draggedId: 10
+    };
+    const state = {
+      points: [point(0)],
+      orders: [point(1), point(2), point(3), point(10), point(4), point(5)]
+    };
+
+    expect(reducer(state, action)).toEqual({
+      points: [point(0)],
+      orders: [point(10), point(1), point(2), point(3), point(4), point(5)]
+    });
+  });
+
+  test("5", () => {
+    const action = {
+      type: "list->reorder",
+      targetId: 0,
+      draggedId: 0
+    };
+    const state = {
+      points: [],
+      orders: [point(0), point(1)]
+    };
+
+    expect(reducer(state, action)).toEqual({
+      points: [],
+      orders: [point(0), point(1)]
+    });
+  });
+
+  test("6", () => {
+    const action = {
+      type: "list->reorder",
+      targetId: NaN,
+      draggedId: 0
+    };
+    const state = {
+      points: [point(0)],
+      orders: []
+    };
+
+    expect(reducer(state, action)).toEqual({
+      points: [],
+      orders: [point(0)]
+    });
+    expect(
+      reducer(
+        {
+          points: [],
+          orders: [point(0)]
+        },
+        action
+      )
+    ).toEqual({
+      points: [],
+      orders: [point(0)]
+    });
+  });
+});

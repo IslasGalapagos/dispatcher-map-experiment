@@ -26,7 +26,6 @@ exports[`App render drop area over the map 1`] = `
   </div>
   <div
     className="list-holder"
-    onDragEnter={[Function]}
     onDragOver={[Function]}
     onDrop={[Function]} />
   <div
@@ -88,7 +87,6 @@ exports[`App render holder over the map 1`] = `
   </div>
   <div
     className="list-holder"
-    onDragEnter={[Function]}
     onDragOver={[Function]}
     onDrop={[Function]} />
 </div>
@@ -138,22 +136,25 @@ exports[`App render orders 1`] = `
   </div>
   <div
     className="list-holder"
-    onDragEnter={[Function]}
     onDragOver={[Function]}
     onDrop={[Function]}>
     <div
       className="list-holder--item list-holder--item--2"
+      data-id={1}
       draggable="true"
       onDragEnd={[Function]}
       onDragStart={[Function]}>
       <div
-        className="list-holder--item--name" />
+        className="list-holder--item--name"
+        data-id={1} />
       <div
-        className="list-holder--item--size">
+        className="list-holder--item--size"
+        data-id={1}>
          YARDS
       </div>
       <div
-        className="list-holder--item--address">
+        className="list-holder--item--address"
+        data-id={1}>
         3
       </div>
     </div>
@@ -197,7 +198,6 @@ exports[`App render points 1`] = `
   </div>
   <div
     className="list-holder"
-    onDragEnter={[Function]}
     onDragOver={[Function]}
     onDrop={[Function]} />
 </div>

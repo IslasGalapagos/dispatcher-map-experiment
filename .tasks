@@ -3,4 +3,7 @@
 ✔ style list items @done (4/6/2017, 2:50:16 AM)
 ✔ replace assigned pin with a numbered pin @done (4/6/2017, 3:26:15 AM)
 ✔ draw arrows between ordered assigned pins @done (4/6/2017, 4:06:58 AM)
-☐ add ability to reorder orders in the right panel
+✔ add ability to reorder orders in the right panel @done (4/7/2017, 3:09:57 AM)
+☐ fix error when the latest order is dropped to the right panel "App.js:56 Uncaught TypeError: Cannot read property 'options' of undefined"
+☐ add ability to cancel move from the map to the list
+☐ don't show holder on mouseover, show standard tooltip, show holder when move only

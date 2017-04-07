@@ -29,7 +29,15 @@ export const mapActions = dispatch => ({
 
   startMoveOutList: order => dispatch({ type: "list->moveStart", order }),
   stopMoveOutList: order => dispatch({ type: "list->moveStop" }),
-  moveOutList: data => dispatch({ type: "list->moveOut", data })
+  moveOutList: data => dispatch({ type: "list->moveOut", data }),
+
+  reorder: event => {
+    const targetId = parseInt(event.target.dataset.id, 10);
+    const dragged = JSON.parse(event.dataTransfer.types[1]);
+    const draggedId = parseInt(dragged.id || (dragged.options || {}).id, 10);
+    dispatch({ type: "list->reorder", targetId, draggedId });
+    event.preventDefault();
+  }
 });
 
 export const prevent = event => event.preventDefault();
@@ -52,7 +60,7 @@ export class App extends Component {
           />
           {orders.map((order, index) => (
             <Marker
-              key={index}
+              key={order.options.id + "-map"}
               position={[order.lat, order.lng]}
               icon={
                 new L.DivIcon({
@@ -86,7 +94,9 @@ export class App extends Component {
         className={`draggable-holder draggable-holder--${holder.data.type}`}
         draggable="true"
         onDragStart={event => {
-          event.dataTransfer.setData("text/plain", JSON.stringify(holder.data));
+          const data = JSON.stringify(holder.data);
+          event.dataTransfer.setData("text/plain", data);
+          event.dataTransfer.setData(data, data);
         }}
         onDragEnd={pointerOut}
         style={{
@@ -110,13 +120,14 @@ export class App extends Component {
       moveToList,
       startMoveOutList,
       stopMoveOutList,
+      reorder,
       orders
     } = this.props;
 
     return (
       <div
         className="list-holder"
-        onDragEnter={prevent}
+        onDragEnter={reorder}
         onDragOver={prevent}
         onDrop={event => {
           const data = JSON.parse(event.dataTransfer.getData("text"));
@@ -128,24 +139,32 @@ export class App extends Component {
       >
         {orders.map(order => (
           <div
-            key={order.options.id}
+            key={order.options.id + "-order"}
             className={
               `list-holder--item list-holder--item--${order.options.type}`
             }
             draggable="true"
             onDragStart={event => {
-              event.dataTransfer.setData("text/plain", JSON.stringify(order));
+              const data = JSON.stringify(order);
+              event.dataTransfer.setData("text/plain", data);
+              event.dataTransfer.setData(data, data);
+              event.dataTransfer.effectAllowed = "move";
               startMoveOutList(order);
             }}
+            onDragEnter={reorder}
             onDragEnd={stopMoveOutList}
+            data-id={order.options.id}
           >
-            <div className="list-holder--item--name">
+            <div className="list-holder--item--name" data-id={order.options.id}>
               {order.options.name}
             </div>
-            <div className="list-holder--item--size">
+            <div className="list-holder--item--size" data-id={order.options.id}>
               {order.options.size} YARDS
             </div>
-            <div className="list-holder--item--address">
+            <div
+              className="list-holder--item--address"
+              data-id={order.options.id}
+            >
               {order.options.address}
             </div>
           </div>

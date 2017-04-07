@@ -25,15 +25,9 @@ export default (state = initialState, action) => {
       return { ...state, holder: null };
 
     case "list->move":
-      const order = state.points.filter(
-        point => point.options.id === action.data.id
-      )[0];
       return {
         ...state,
-        points: state.points.filter(
-          point => point.options.id !== action.data.id
-        ),
-        orders: state.orders.concat(order)
+        points: filterById(state.points, action.data.id, true)
       };
 
     case "list->moveStart":
@@ -52,12 +46,50 @@ export default (state = initialState, action) => {
       return {
         ...state,
         points: state.points.concat(action.data),
-        orders: state.orders.filter(
-          order => order.options.id !== action.data.options.id
-        )
+        orders: filterById(state.orders, action.data.options.id, true)
+      };
+
+    case "list->reorder":
+      let orders = state.orders;
+      if (action.targetId === action.draggedId) {
+        return { ...state };
+      }
+
+      let dragged = filterById(state.points, action.draggedId);
+      if (dragged.length === 0) {
+        dragged = filterById(state.orders, action.draggedId);
+      }
+
+      orders = filterById(state.orders, action.draggedId, true);
+
+      if (!action.targetId) {
+        orders = orders.concat(dragged);
+      } else {
+        const targetIndex = orders.reduce(
+          (result, order, index) =>
+            order.options.id === action.targetId ? index : result,
+          -1
+        );
+        orders.splice(targetIndex, 0, dragged[0]);
+      }
+
+      return {
+        ...state,
+        points: filterById(state.points, action.draggedId, true),
+        orders
       };
 
     default:
       return state;
   }
 };
+
+function filterById(list, id, ne = false) {
+  return list.filter(item => {
+    const result = item.options.id === id;
+    if (ne) {
+      return !result;
+    }
+    return result;
+  });
+}
