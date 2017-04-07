@@ -188,12 +188,93 @@ exports[`App render points 1`] = `
           ]
         }
         wrapperOptions={Object {}} />
+      <Marker
+        icon={
+          NewClass {
+            "_initHooksCalled": true,
+            "options": Object {
+              "className": "work-order-sorted-icon",
+              "html": "<span>1</span>",
+            },
+          }
+        }
+        position={
+          Array [
+            3,
+            4,
+          ]
+        } />
+      <Marker
+        icon={
+          NewClass {
+            "_initHooksCalled": true,
+            "options": Object {
+              "className": "work-order-sorted-icon",
+              "html": "<span>2</span>",
+            },
+          }
+        }
+        position={
+          Array [
+            5,
+            6,
+          ]
+        } />
+      <Polyline
+        color="#444"
+        positions={
+          Array [
+            Array [
+              3,
+              4,
+            ],
+            Array [
+              5,
+              6,
+            ],
+          ]
+        } />
     </Map>
   </div>
   <div
     className="list-holder"
     onDragOver={[Function]}
-    onDrop={[Function]} />
+    onDrop={[Function]}>
+    <div
+      className="list-holder--item list-holder--item--undefined"
+      data-id={10}
+      draggable="true"
+      onDragStart={[Function]}>
+      <div
+        className="list-holder--item--name"
+        data-id={10} />
+      <div
+        className="list-holder--item--size"
+        data-id={10}>
+         YARDS
+      </div>
+      <div
+        className="list-holder--item--address"
+        data-id={10} />
+    </div>
+    <div
+      className="list-holder--item list-holder--item--undefined"
+      data-id={20}
+      draggable="true"
+      onDragStart={[Function]}>
+      <div
+        className="list-holder--item--name"
+        data-id={20} />
+      <div
+        className="list-holder--item--size"
+        data-id={20}>
+         YARDS
+      </div>
+      <div
+        className="list-holder--item--address"
+        data-id={20} />
+    </div>
+  </div>
 </div>
 `;
 
@@ -235,6 +316,36 @@ Array [
     },
     "rect": "RECT",
     "type": "holder->show",
+  },
+]
+`;
+
+exports[`mapActions reorder 1`] = `
+Array [
+  Object {
+    "draggedId": 245,
+    "targetId": 1000,
+    "type": "list->reorder",
+  },
+]
+`;
+
+exports[`mapActions reorder 2`] = `
+Array [
+  Object {
+    "draggedId": 345,
+    "targetId": 2000,
+    "type": "list->reorder",
+  },
+]
+`;
+
+exports[`mapActions reorder 3`] = `
+Array [
+  Object {
+    "draggedId": NaN,
+    "targetId": 3000,
+    "type": "list->reorder",
   },
 ]
 `;

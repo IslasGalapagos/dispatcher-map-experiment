@@ -10,7 +10,14 @@ describe("App", () => {
     const moveToList = jest.fn();
 
     const holder = shallow(
-      <App points={[{ lat: 1, lng: 2 }]} orders={[]} moveToList={moveToList} />
+      <App
+        points={[{ lat: 1, lng: 2 }]}
+        orders={[
+          { lat: 3, lng: 4, options: { id: 10 } },
+          { lat: 5, lng: 6, options: { id: 20 } }
+        ]}
+        moveToList={moveToList}
+      />
     );
     const $holder = holder.find(".list-holder");
 
@@ -166,5 +173,35 @@ describe("mapActions", () => {
     moveOutList("data");
 
     expect(dispatch.mock.calls[0]).toMatchSnapshot();
+  });
+
+  it("reorder", () => {
+    const { reorder } = mapActions(dispatch);
+    const preventDefault = jest.fn();
+
+    reorder({
+      target: { dataset: { id: "1000" } },
+      dataTransfer: { types: ["", '{"id":245}'] },
+      preventDefault
+    });
+
+    expect(dispatch.mock.calls[0]).toMatchSnapshot();
+    expect(preventDefault).toBeCalled();
+
+    reorder({
+      target: { dataset: { id: "2000" } },
+      dataTransfer: { types: ["", '{"options":{"id":345}}'] },
+      preventDefault
+    });
+
+    expect(dispatch.mock.calls[1]).toMatchSnapshot();
+
+    reorder({
+      target: { dataset: { id: "3000" } },
+      dataTransfer: { types: ["", "{}"] },
+      preventDefault
+    });
+
+    expect(dispatch.mock.calls[2]).toMatchSnapshot();
   });
 });
