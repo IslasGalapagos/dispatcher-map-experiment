@@ -10,7 +10,10 @@ import L from "leaflet";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
-const store = createStore(dispatcherMapApp);
+const store = createStore(
+  dispatcherMapApp,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),

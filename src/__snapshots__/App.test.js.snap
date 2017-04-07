@@ -20,8 +20,6 @@ exports[`App render drop area over the map 1`] = `
       useFlyTo={false}>
       <TileLayer
         url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
-      <MarkerClusterGroup
-        wrapperOptions={Object {}} />
     </Map>
   </div>
   <div
@@ -58,8 +56,6 @@ exports[`App render holder over the map 1`] = `
       useFlyTo={false}>
       <TileLayer
         url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
-      <MarkerClusterGroup
-        wrapperOptions={Object {}} />
     </Map>
   </div>
   <div
@@ -114,8 +110,6 @@ exports[`App render orders 1`] = `
       useFlyTo={false}>
       <TileLayer
         url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
-      <MarkerClusterGroup
-        wrapperOptions={Object {}} />
       <Marker
         icon={
           NewClass {

@@ -31,6 +31,7 @@ describe("App", () => {
 
     const holder = shallow(
       <App
+        points={[]}
         orders={[]}
         holder={{ top: 1, left: 2, width: 3, height: 4, data: { prop: 101 } }}
         pointerOut={pointerOut}
@@ -56,6 +57,7 @@ describe("App", () => {
 
     const holder = shallow(
       <App
+        points={[]}
         orders={[]}
         dropArea={true}
         moveOutList={moveOutList}
@@ -81,6 +83,7 @@ describe("App", () => {
 
     const holder = shallow(
       <App
+        points={[]}
         orders={[order]}
         startMoveOutList={startMoveOutList}
         stopMoveOutList={stopMoveOutList}

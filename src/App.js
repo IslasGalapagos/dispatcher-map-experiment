@@ -54,10 +54,11 @@ export class App extends Component {
       <div className="map-holder">
         <Map bounds={bounds} maxZoom={18}>
           <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
-          <MarkerClusterGroup
-            onMarkerMouseOver={pointerOver}
-            markers={points}
-          />
+          {points.length > 0 &&
+            <MarkerClusterGroup
+              onMarkerMouseOver={pointerOver}
+              markers={points}
+            />}
           {orders.map((order, index) => (
             <Marker
               key={order.options.id + "-map"}
